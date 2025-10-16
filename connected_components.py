@@ -17,11 +17,19 @@ class Solution:
                         visited[neighbor] = 1
                         q.append(neighbor)
         
+        def dfs(node):
+            visited[node] = 1
+            for neighbor in adjList[node]:
+                if visited[neighbor] == -1:
+                    visited[neighbor] = 1
+                    dfs(neighbor)
+        
+
         count = 0
         for v in range(n):
             if visited[v] == -1:
                 count+=1
-                bfs(v)
+                dfs(v)
         return count
 
                 
