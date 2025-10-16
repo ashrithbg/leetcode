@@ -1,6 +1,7 @@
 class Solution:
-    ## A tree is a graph with no cycles and only one connected component.
-###Make sure to check the count of connected components alongwith checking if the neighbor is already visited(and is not a parent)
+    ### A tree is a graph with no cycles and only one connected component.
+    ### Make sure to check the count of connected components alongwith checking if the neighbor is already visited(and is not a parent)
+    ### Alongwith visited array we will have a parent array which will store parent of a neighbor
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         adjList = [[] for _ in range(n)]
 
