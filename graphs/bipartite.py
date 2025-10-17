@@ -1,3 +1,17 @@
+## Checking for bipartiteness means in case of DFS finding cycles with odd length. 
+## So we will have a distance array. We add one to the neighbor's distance as we discover it.
+## In case of BFS in undirected graphs only cross edges lead to cycles and even amongst cross edges only the ones which are at the same level.
+## So checking for equality in distance between neighbor and node will confirm if it has an odd length cycle(i.e cross edge at the same level)
+
+
+## If we use DFS we need to find back edges. 
+## We have a color array array with all values set to false. When we visit a neighbor we will invert its color from that of the parent
+## If we find that we already visited the vertex i.e presence of a cycle we compare the colors and if they are the same that means we found a back egde of odd length
+
+#BFS implementation: track dist (or color = dist % 2). If you see an edge (u, v) with dist[u] == dist[v], return False.
+
+#DFS implementation: track color in {0,1}; if you see an edge to an already colored vertex with the same color, return False.
+
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         n = len(graph)
