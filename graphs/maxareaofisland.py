@@ -15,6 +15,16 @@ class Solution:
             if y-1>=0:
                 neighbors.append((x,y-1))
             return neighbors
+
+        def dfs(row, col):
+            grid[row][col] = 0
+            area = 1
+            for neighborx,neighbory in getNeighbors(row,col):
+                if grid[neighborx][neighbory] == 1:
+                    grid[neighborx][neighbory] = 0
+                    area+=dfs(neighborx, neighbory)
+            return area
+                
         
         def bfs(row, col):
             q = deque([(row, col)])
@@ -34,6 +44,6 @@ class Solution:
         for row in range(m):
             for col in range(n):
                 if grid[row][col] == 1:
-                    area = bfs(row, col)
+                    area = dfs(row, col)
                     maxarea[0] = max(maxarea[0], area)
         return maxarea[0]
